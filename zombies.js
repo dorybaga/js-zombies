@@ -265,6 +265,7 @@ Player.prototype.equip = function(itemToEquip){
  * Increase the player's health by the food's energy amount, but do not
  *   exceed the player's max health.  If exceeded, simply set player's health
  *   to max health instead.
+
  * To access the player's max health, be sure to use Player's getMaxHealth method.
  * You should be able to invoke this function on a Player instance.
  *
@@ -272,6 +273,19 @@ Player.prototype.equip = function(itemToEquip){
  * @param {Food} itemToEat  The food item to eat.
  */
 
+Player.prototype.eat = function(itemToEat){
+  var itemIndex = this._pack.indexOf(itemToEat);
+  var maxHealth = this._maxHealth; // couldn't get getMaxHealth() to work; console logged as undefined; b/c of private variable??
+  if (itemToEat instanceof Food && itemIndex !== -1){
+    this._pack.splice(itemIndex, 1);
+    this.health += itemToEat.energy;
+    if (this.health > maxHealth){
+      this.health = maxHealth;
+    } else {
+      this.health += itemToEat.energy;
+    }
+  }
+};
 
 /**
  * Player Class Method => useItem(item)
