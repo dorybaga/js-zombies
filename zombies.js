@@ -123,13 +123,24 @@ function Player(name, health, strength, speed){
  */
 
  Player.prototype.getPack = function(){
-  // console.log("in my bag");
   return this._pack;
  };
 
- // var dory = new Player();
+ var dory = new Player();
  // dory.checkPack();
 
+ /**
+  * Player Class Method => getMaxHealth() & getHealth()
+  ------------------------------
+  */
+
+Player.prototype.getMaxHealth = function(){
+  return this._maxHealth;
+ };
+
+Player.prototype.getHealth = function(){
+  return this._health;
+ };
 
 /**
  * Player Class Method => takeItem(item)
@@ -138,9 +149,11 @@ function Player(name, health, strength, speed){
  *
  * Player's pack can only hold a maximum of 3 items, so if they try to add more
  *   than that to the pack, return false.
+
  * Before returning true or false, print a message containing the player's
  *   name and item's name if successful.  Otherwise, print a message saying
  *   that the pack is full so the item could not be stored.
+
  * Note: The player is allowed to store similar items (items with the same name).
  * You should be able to invoke this function on a Player instance.
  *
@@ -149,6 +162,18 @@ function Player(name, health, strength, speed){
  * @return {boolean} true/false     Whether player was able to store item in pack.
     return true; console.log(true/false)
  */
+
+Player.prototype.takeItem = function(item){
+  if (this._pack.length < 3) {
+      this._pack.push(item);
+      console.log(this.name, item);
+      return true;
+  } else {
+    console.log("your pack is full. the item could not be stored.");
+    return false;
+  }
+ };
+
 
 
 /**
