@@ -130,9 +130,6 @@ Player.prototype.checkPack = function(){
   console.log(this._pack);
 };
 
- var dory = new Player();
- // dory.checkPack();
-
  /**
   * Player Class Method => getMaxHealth() & getHealth()
   ------------------------------
@@ -469,19 +466,29 @@ RangedZombie.prototype = Object.create(Zombie.prototype, {
  * @param {number} speed            The zombie's speed.
  */
 
+function ExplodingZombie(health, strength, speed){
+  this.health = health;
+  this.strength = strength;
+  this.speed = speed;
+
+  Zombie.call(this, health, strength, speed);
+}
 
 /**
  * ExplodingZombie Extends Zombie Class
  * -----------------------------
  */
 
-
+ExplodingZombie.prototype = Object.create(Zombie.prototype, {
+  constructor: ExplodingZombie
+});
 
 
 /**
  * Sample run.
  * Feel free to edit this and check your game logic.
  */
+
 function runGame() {
   // var player = new Player("Joan", 500, 30, 70);
   // var zombie = new Zombie(40, 50, 20);
