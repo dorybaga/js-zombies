@@ -122,6 +122,14 @@ function Player(name, health, strength, speed){
  * @name checkPack
  */
 
+ Player.prototype.getPack = function(){
+  // console.log("in my bag");
+  return this._pack;
+ };
+
+ // var dory = new Player();
+ // dory.checkPack();
+
 
 /**
  * Player Class Method => takeItem(item)
