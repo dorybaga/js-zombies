@@ -169,9 +169,9 @@ Player.prototype.getHealth = function(){
 
 Player.prototype.takeItem = function(item){
   if (this._pack.length < 3) {
-      this._pack.push(item);
-      console.log(this.name, item);
-      return true;
+    this._pack.push(item);
+    console.log(this.name, item);
+    return true;
   } else {
     console.log("your pack is full. the item could not be stored.");
     return false;
@@ -228,6 +228,7 @@ Player.prototype.discardItem = function(item){
  *   is set to an Item), find the itemToEquip in the pack and replace
  *   it with the currently equipped item.  Then set the equipped property
  *   to the itemToEquip.
+
  * However, if the player doesn't already have a weapon equipped, simply
  *   equip that item and remove it from the pack.
  * You should be able to invoke this function on a Player instance.
@@ -236,11 +237,21 @@ Player.prototype.discardItem = function(item){
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
 
-
-
 Player.prototype.equip = function(itemToEquip){
-
-}
+  var itemIndex = this._pack.indexOf(itemToEquip);
+  if (itemToEquip instanceof Weapon && itemIndex !== -1){
+    if (this.equipped !== false){
+      var isEquipped = this.equipped;
+      this._pack.splice(itemIndex, 1, isEquipped);
+      this.equipped = itemToEquip;
+    } else if (this.equipped === false) {
+        this._pack.splice(itemIndex, 1);
+        this.equipped = itemToEquip;
+    } else {
+        return false;
+    }
+  }
+};
 
 /**
  * Player Class Method => eat(itemToEat)
