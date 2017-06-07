@@ -29,7 +29,6 @@ function Item(name){
  */
 
 function Weapon(name, damage){
-  this.name = name;
   this.damage = damage;
   Item.call(this, name);
 }
@@ -100,8 +99,15 @@ Food.prototype = Object.create(Item.prototype, {
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
 
-function Player(){
+function Player(name, health, strength, speed){
   this._pack = [];
+  this.name = name;
+  this.health = health;
+  this.strength = strength;
+  this.speed = speed;
+  this.isAlive = true;
+  this.equipped = false;
+  this._maxHealth = health;
 }
 
 /**
