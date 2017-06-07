@@ -126,6 +126,10 @@ function Player(name, health, strength, speed){
   return this._pack;
  };
 
+Player.prototype.checkPack = function(){
+  console.log(this._pack);
+};
+
  var dory = new Player();
  // dory.checkPack();
 
@@ -232,6 +236,11 @@ Player.prototype.discardItem = function(item){
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
 
+
+
+Player.prototype.equip = function(itemToEquip){
+
+}
 
 /**
  * Player Class Method => eat(itemToEat)
