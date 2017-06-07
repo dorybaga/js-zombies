@@ -174,8 +174,6 @@ Player.prototype.takeItem = function(item){
   }
  };
 
-
-
 /**
  * Player Class Method => discardItem(item)
  * -----------------------------
@@ -202,6 +200,17 @@ Player.prototype.takeItem = function(item){
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
 
+Player.prototype.discardItem = function(item){
+  var itemIndex = this._pack.indexOf(item);
+  if (itemIndex !== -1){
+    this._pack.splice(itemIndex, 1);
+    console.log(item + " has been discarded " + "from " + this.name + "'s pack.");
+    return true;
+  } else {
+    console.log("nothing was discarded because item could not be found.");
+    return false;
+  }
+};
 
 /**
  * Player Class Method => equip(itemToEquip)
