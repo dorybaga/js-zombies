@@ -8,6 +8,9 @@
  * @property {string} name
  */
 
+function Item(name){
+  this.name = name;
+}
 
 /**
  * Class => Weapon(name, damage)
@@ -25,12 +28,20 @@
  * @property {number} damage
  */
 
+function Weapon(name, damage){
+  this.name = name;
+  this.damage = damage;
+  Item.call(this, name);
+}
 
 /**
  * Weapon Extends Item Class
  * -----------------------------
  */
 
+Weapon.prototype = Object.create(Item.prototype, {
+  constructor: Weapon
+});
 
 
 /**
@@ -67,8 +78,10 @@
  * @param {number} health                  The player's health.
  * @param {number} strength                The player's strength.
  * @param {number} speed                   The player's speed.
+
  * @private {array} pack                   Default value should be empty.
  * @private {number} maxHealth             Default value should be set to `health`.
+
  * @property {string} name
  * @property {number} health
  * @property {number} strength
@@ -79,6 +92,9 @@
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
 
+function Player(){
+  this._pack = [];
+}
 
 /**
  * Player Class Method => checkPack()
@@ -109,6 +125,7 @@
  * @name takeItem
  * @param {Item/Weapon/Food} item   The item to take.
  * @return {boolean} true/false     Whether player was able to store item in pack.
+    return true; console.log(true/false)
  */
 
 
