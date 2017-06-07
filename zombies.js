@@ -307,7 +307,6 @@ Player.prototype.useItem = function(item){
 };
 
 
-
 /**
  * Player Class Method => equippedWith()
  * -----------------------------
@@ -321,6 +320,16 @@ Player.prototype.useItem = function(item){
  * @name equippedWith
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
+
+Player.prototype.equippedWith = function(){
+  if (this.equipped !== false){
+    console.log(this.name + " is equipped with a " + this.equipped.name);
+    return this.equipped.name;
+  } else {
+    console.log(this.name + " is not equipped");
+    return false;
+  }
+};
 
 
 /**
