@@ -147,30 +147,22 @@ class Player {
     }
   }
 
-
+  eat(itemToEat){
+    var itemIndex = this._pack.indexOf(itemToEat);
+    var maxHealth = this._maxHealth; // couldn't get getMaxHealth() to work; console logged as undefined; b/c of private variable??
+    if (itemToEat instanceof Food && itemIndex !== -1){
+      this._pack.splice(itemIndex, 1);
+      this.health += itemToEat.energy;
+      if (this.health > maxHealth){
+        this.health = maxHealth;
+      }
+    }
   }
 
 
 
-/**
- * Player Class Method => equip(itemToEquip)
- * -----------------------------
- * Player equips a weapon item.
- *
- * Player can only equip Weapon instances.
- * Player can only equip weapon items from their pack.
- *
- * If the player already has a weapon equipped (the equipped property
- *   is set to an Item), find the itemToEquip in the pack and replace
- *   it with the currently equipped item.  Then set the equipped property
- *   to the itemToEquip.
- * However, if the player doesn't already have a weapon equipped, simply
- *   equip that item and remove it from the pack.
- * You should be able to invoke this function on a Player instance.
- *
- * @name equip
- * @param {Weapon} itemToEquip  The weapon item to equip.
- */
+  }
+
 
 
 /**
