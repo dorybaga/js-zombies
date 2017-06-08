@@ -105,6 +105,10 @@ class Player {
   getMaxHealth(){
     return this._maxHealth;
   }
+
+  checkPack(){
+    console.log(this._pack);
+  }
 }
 
 /**
