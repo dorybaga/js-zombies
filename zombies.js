@@ -109,20 +109,18 @@ class Player {
   checkPack(){
     console.log(this._pack);
   }
-}
 
-/**
- * Player Class Method => checkPack()
- * -----------------------------
- * Player checks the contents of their pack.
- *
- * Nicely format and print the items in the player's pack.
- * To access the pack, be sure to use Player's getPack method.
- * You should be able to invoke this function on a Player instance.
- *
- * @name checkPack
- */
-
+  takeItem(item){
+    if (this._pack.length < 3) {
+      this._pack.push(item);
+      console.log(this.name, item);
+      return true;
+      } else {
+      console.log("your pack is full. the item could not be stored.");
+      return false;
+      }
+    }
+  }
 
 /**
  * Player Class Method => takeItem(item)
