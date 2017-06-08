@@ -236,17 +236,15 @@ Player.prototype.discardItem = function(item){
 
 Player.prototype.equip = function(itemToEquip){
   var itemIndex = this._pack.indexOf(itemToEquip);
-  if (itemToEquip instanceof Weapon && itemIndex !== -1){
-    if (this.equipped !== false){
-      var isEquipped = this.equipped;
-      this._pack.splice(itemIndex, 1, isEquipped);
-      this.equipped = itemToEquip;
-    } else if (this.equipped === false) {
-        this._pack.splice(itemIndex, 1);
-        this.equipped = itemToEquip;
-    } else {
-        return false;
-    }
+  if(itemToEquip instanceof Weapon && itemIndex !== -1 && this.equipped !== false){
+    var isEquipped = this.equipped;
+    this._pack.splice(itemIndex, 1, isEquipped);
+    this.equipped = itemToEquip;
+  } else if (itemToEquip instanceof Weapon && itemIndex !== -1 && this.equipped === false){
+    this._pack.splice(itemIndex, 1);
+    this.equipped = itemToEquip;
+  } else {
+    return false;
   }
 };
 
