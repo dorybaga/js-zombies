@@ -150,6 +150,7 @@ class ExplodingZombie extends Zombie {
  * Sample run.
  * Feel free to edit this and check your game logic.
  */
+
 function runGame() {
   // var player = new Player("Joan", 500, 30, 70);
   // var zombie = new Zombie(40, 50, 20);
