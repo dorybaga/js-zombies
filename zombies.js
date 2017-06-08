@@ -120,26 +120,19 @@ class Player {
       return false;
       }
     }
+
+  discardItem(item){
+    var itemIndex = this._pack.indexOf(item);
+    if (itemIndex !== -1){
+      this._pack.splice(itemIndex, 1);
+      console.log(item + " has been discarded " + "from " + this.name + "'s pack.");
+      return true;
+      } else {
+        console.log("nothing was discarded because item could not be found.");
+        return false;
+      }
+    }
   }
-
-/**
- * Player Class Method => takeItem(item)
- * -----------------------------
- * Player takes an item from the world and places it into their pack.
- *
- * Player's pack can only hold a maximum of 3 items, so if they try to add more
- *   than that to the pack, return false.
- * Before returning true or false, print a message containing the player's
- *   name and item's name if successful.  Otherwise, print a message saying
- *   that the pack is full so the item could not be stored.
- * Note: The player is allowed to store similar items (items with the same name).
- * You should be able to invoke this function on a Player instance.
- *
- * @name takeItem
- * @param {Item/Weapon/Food} item   The item to take.
- * @return {boolean} true/false     Whether player was able to store item in pack.
- */
-
 
 /**
  * Player Class Method => discardItem(item)
