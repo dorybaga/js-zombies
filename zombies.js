@@ -167,23 +167,18 @@ class Player {
     }
   }
 
+  equippedWith(){
+    if (this.equipped !== false){
+      console.log(this.name + " is equipped with a " + this.equipped.name);
+      return this.equipped.name;
+      } else {
+      console.log(this.name + " is not equipped");
+      return false;
+      }
+    }
+
 
   }
-
-
-/**
- * Player Class Method => useItem(item)
- * -----------------------------
- * Player uses an item from the pack.
- *
- * If the item is a weapon, the player should equip the item.
- * If the item is food, the player should eat the item.
- * You should be able to invoke this function on a Player instance.
- *
- * @name useItem
- * @param {Item/Weapon/Food} item   The item to use.
- */
-
 
 /**
  * Player Class Method => equippedWith()
