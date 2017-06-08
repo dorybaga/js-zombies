@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 /**
  * Class => Item(name)
  * -----------------------------
@@ -8,6 +10,11 @@
  * @property {string} name
  */
 
+class Item {
+  constructor(name){
+    this.name = name;
+  }
+}
 
 /**
  * Class => Weapon(name, damage)
@@ -25,13 +32,12 @@
  * @property {number} damage
  */
 
-
-/**
- * Weapon Extends Item Class
- * -----------------------------
- */
-
-
+class Weapon extends Item {
+  constructor(name, damage){
+    super(name);
+    this.damage = damage;
+  }
+}
 
 /**
  * Class => Food(name, energy)
@@ -49,13 +55,12 @@
  * @property {number} energy
  */
 
-
-/**
- * Food Extends Item Class
- * -----------------------------
- */
-
-
+class Food extends Item {
+  constructor(name, energy){
+    super(name);
+    this.energy = energy;
+  }
+}
 
 /**
  * Class => Player(name, health, strength, speed)
@@ -67,8 +72,10 @@
  * @param {number} health                  The player's health.
  * @param {number} strength                The player's strength.
  * @param {number} speed                   The player's speed.
+
  * @private {array} pack                   Default value should be empty.
  * @private {number} maxHealth             Default value should be set to `health`.
+
  * @property {string} name
  * @property {number} health
  * @property {number} strength
@@ -79,6 +86,26 @@
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
 
+class Player {
+  constructor(name, health, strength, speed){
+    this.name = name;
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+    this.isAlive = true;
+    this.equipped = false;
+    this._pack = [];
+    this._maxHealth = health;
+  }
+
+  getPack(){
+    return this._pack;
+  }
+
+  getMaxHealth(){
+    return this._maxHealth;
+  }
+}
 
 /**
  * Player Class Method => checkPack()
